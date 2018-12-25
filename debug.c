@@ -47,7 +47,6 @@ void _rtl_dbg_trace(struct rtl_priv *rtlpriv, u64 comp, int level,
 		va_end(args);
 	}
 }
-EXPORT_SYMBOL_GPL(_rtl_dbg_trace);
 
 void _rtl_dbg_print(struct rtl_priv *rtlpriv, u64 comp, int level,
 		    const char *fmt, ...)
@@ -67,7 +66,6 @@ void _rtl_dbg_print(struct rtl_priv *rtlpriv, u64 comp, int level,
 		va_end(args);
 	}
 }
-EXPORT_SYMBOL_GPL(_rtl_dbg_print);
 
 void _rtl_dbg_print_data(struct rtl_priv *rtlpriv, u64 comp, int level,
 			 const char *titlestring,
@@ -81,7 +79,6 @@ void _rtl_dbg_print_data(struct rtl_priv *rtlpriv, u64 comp, int level,
 				     hexdata, hexdatalen);
 	}
 }
-EXPORT_SYMBOL_GPL(_rtl_dbg_print_data);
 
 struct rtl_debugfs_priv {
 	struct rtl_priv *rtlpriv;
@@ -539,7 +536,6 @@ void rtl_debug_add_one(struct ieee80211_hw *hw)
 	RTL_DEBUGFS_ADD_W(write_h2c);
 	RTL_DEBUGFS_ADD_W(write_rfreg);
 }
-EXPORT_SYMBOL_GPL(rtl_debug_add_one);
 
 void rtl_debug_remove_one(struct ieee80211_hw *hw)
 {
@@ -548,7 +544,6 @@ void rtl_debug_remove_one(struct ieee80211_hw *hw)
 	debugfs_remove_recursive(rtlpriv->dbg.debugfs_dir);
 	rtlpriv->dbg.debugfs_dir = NULL;
 }
-EXPORT_SYMBOL_GPL(rtl_debug_remove_one);
 
 void rtl_debugfs_add_topdir(void)
 {

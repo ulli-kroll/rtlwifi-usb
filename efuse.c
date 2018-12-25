@@ -149,7 +149,6 @@ u8 efuse_read_1byte(struct ieee80211_hw *hw, u16 address)
 		return 0xFF;
 
 }
-EXPORT_SYMBOL(efuse_read_1byte);
 
 void efuse_write_1byte(struct ieee80211_hw *hw, u16 address, u8 value)
 {
@@ -229,7 +228,6 @@ void read_efuse_byte(struct ieee80211_hw *hw, u16 _offset, u8 *pbuf)
 
 	*pbuf = (u8) (value32 & 0xff);
 }
-EXPORT_SYMBOL_GPL(read_efuse_byte);
 
 void read_efuse(struct ieee80211_hw *hw, u16 _offset, u16 _size_byte, u8 *pbuf)
 {
@@ -434,7 +432,6 @@ void efuse_shadow_read(struct ieee80211_hw *hw, u8 type,
 		efuse_shadow_read_4byte(hw, offset, value);
 
 }
-EXPORT_SYMBOL(efuse_shadow_read);
 
 void efuse_shadow_write(struct ieee80211_hw *hw, u8 type, u16 offset,
 				u32 value)
@@ -538,7 +535,6 @@ void rtl_efuse_shadow_map_update(struct ieee80211_hw *hw)
 			rtlpriv->cfg->maps[EFUSE_HWSET_MAX_SIZE]);
 
 }
-EXPORT_SYMBOL(rtl_efuse_shadow_map_update);
 
 void efuse_force_write_vendor_Id(struct ieee80211_hw *hw)
 {
@@ -649,7 +645,6 @@ int efuse_one_byte_read(struct ieee80211_hw *hw, u16 addr, u8 *data)
 	}
 	return result;
 }
-EXPORT_SYMBOL(efuse_one_byte_read);
 
 static int efuse_one_byte_write(struct ieee80211_hw *hw, u16 addr, u8 data)
 {
@@ -1213,7 +1208,6 @@ void efuse_power_switch(struct ieee80211_hw *hw, u8 write, u8 pwrstate)
 		}
 	}
 }
-EXPORT_SYMBOL(efuse_power_switch);
 
 static u16 efuse_get_current_size(struct ieee80211_hw *hw)
 {
@@ -1326,7 +1320,6 @@ int rtl_get_hwinfo(struct ieee80211_hw *hw, struct rtl_priv *rtlpriv,
 
 	return 0;
 }
-EXPORT_SYMBOL_GPL(rtl_get_hwinfo);
 
 void rtl_fw_block_write(struct ieee80211_hw *hw, const u8 *buffer, u32 size)
 {
@@ -1337,7 +1330,6 @@ void rtl_fw_block_write(struct ieee80211_hw *hw, const u8 *buffer, u32 size)
 	for (i = 0; i < size; i++)
 		rtl_write_byte(rtlpriv, (START_ADDRESS + i), *(pu4byteptr + i));
 }
-EXPORT_SYMBOL_GPL(rtl_fw_block_write);
 
 void rtl_fw_page_write(struct ieee80211_hw *hw, u32 page, const u8 *buffer,
 		       u32 size)
@@ -1351,7 +1343,6 @@ void rtl_fw_page_write(struct ieee80211_hw *hw, u32 page, const u8 *buffer,
 	rtl_write_byte(rtlpriv, (REG_MCUFWDL + 2), value8);
 	rtl_fw_block_write(hw, buffer, size);
 }
-EXPORT_SYMBOL_GPL(rtl_fw_page_write);
 
 void rtl_fill_dummy(u8 *pfwbuf, u32 *pfwlen)
 {
@@ -1368,7 +1359,6 @@ void rtl_fill_dummy(u8 *pfwbuf, u32 *pfwlen)
 
 	*pfwlen = fwlen;
 }
-EXPORT_SYMBOL_GPL(rtl_fill_dummy);
 
 void rtl_efuse_ops_init(struct ieee80211_hw *hw)
 {
@@ -1376,4 +1366,3 @@ void rtl_efuse_ops_init(struct ieee80211_hw *hw)
 
 	rtlpriv->efuse.efuse_ops = &efuse_ops;
 }
-EXPORT_SYMBOL_GPL(rtl_efuse_ops_init);

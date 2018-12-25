@@ -169,7 +169,6 @@ u8 rtl_tid_to_ac(u8 tid)
 {
 	return tid_to_ac[tid];
 }
-EXPORT_SYMBOL_GPL(rtl_tid_to_ac);
 
 static void _rtl_init_hw_ht_capab(struct ieee80211_hw *hw,
 				  struct ieee80211_sta_ht_cap *ht_cap)
@@ -500,7 +499,6 @@ void rtl_deinit_deferred_work(struct ieee80211_hw *hw, bool ips_wq)
 	cancel_delayed_work_sync(&rtlpriv->works.fwevt_wq);
 	cancel_delayed_work_sync(&rtlpriv->works.c2hcmd_wq);
 }
-EXPORT_SYMBOL_GPL(rtl_deinit_deferred_work);
 
 void rtl_init_rfkill(struct ieee80211_hw *hw)
 {
@@ -528,13 +526,11 @@ void rtl_init_rfkill(struct ieee80211_hw *hw)
 
 	wiphy_rfkill_start_polling(hw->wiphy);
 }
-EXPORT_SYMBOL(rtl_init_rfkill);
 
 void rtl_deinit_rfkill(struct ieee80211_hw *hw)
 {
 	wiphy_rfkill_stop_polling(hw->wiphy);
 }
-EXPORT_SYMBOL_GPL(rtl_deinit_rfkill);
 
 int rtl_init_core(struct ieee80211_hw *hw)
 {
@@ -585,7 +581,6 @@ int rtl_init_core(struct ieee80211_hw *hw)
 
 	return 0;
 }
-EXPORT_SYMBOL_GPL(rtl_init_core);
 
 static void rtl_free_entries_from_scan_list(struct ieee80211_hw *hw);
 static void rtl_free_entries_from_ack_queue(struct ieee80211_hw *hw,
@@ -597,7 +592,6 @@ void rtl_deinit_core(struct ieee80211_hw *hw)
 	rtl_free_entries_from_scan_list(hw);
 	rtl_free_entries_from_ack_queue(hw, false);
 }
-EXPORT_SYMBOL_GPL(rtl_deinit_core);
 
 void rtl_init_rx_config(struct ieee80211_hw *hw)
 {
@@ -606,7 +600,6 @@ void rtl_init_rx_config(struct ieee80211_hw *hw)
 
 	rtlpriv->cfg->ops->get_hw_reg(hw, HW_VAR_RCR, (u8 *) (&mac->rx_conf));
 }
-EXPORT_SYMBOL_GPL(rtl_init_rx_config);
 
 /*********************************************************
  *
@@ -778,7 +771,6 @@ u8 rtl_mrate_idx_to_arfr_id(struct ieee80211_hw *hw, u8 rate_index,
 	}
 	return ret;
 }
-EXPORT_SYMBOL(rtl_mrate_idx_to_arfr_id);
 
 static void _rtl_txrate_selectmode(struct ieee80211_hw *hw,
 				   struct ieee80211_sta *sta,
@@ -1197,7 +1189,6 @@ int rtlwifi_rate_mapping(struct ieee80211_hw *hw, bool isht, bool isvht,
 	}
 	return rate_idx;
 }
-EXPORT_SYMBOL(rtlwifi_rate_mapping);
 
 static u8 _rtl_get_tx_hw_rate(struct ieee80211_hw *hw,
 			      struct ieee80211_tx_info *info)
@@ -1325,7 +1316,6 @@ void rtl_get_tcb_desc(struct ieee80211_hw *hw,
 	}
 #undef SET_RATE_ID
 }
-EXPORT_SYMBOL(rtl_get_tcb_desc);
 
 bool rtl_tx_mgmt_proc(struct ieee80211_hw *hw, struct sk_buff *skb)
 {
@@ -1350,7 +1340,6 @@ bool rtl_tx_mgmt_proc(struct ieee80211_hw *hw, struct sk_buff *skb)
 
 	return true;
 }
-EXPORT_SYMBOL_GPL(rtl_tx_mgmt_proc);
 
 struct sk_buff *rtl_make_del_ba(struct ieee80211_hw *hw, u8 *sa,
 				u8 *bssid, u16 tid);
@@ -1460,7 +1449,6 @@ bool rtl_action_proc(struct ieee80211_hw *hw, struct sk_buff *skb, u8 is_tx)
 
 	return true;
 }
-EXPORT_SYMBOL_GPL(rtl_action_proc);
 
 static void setup_special_tx(struct rtl_priv *rtlpriv, struct rtl_ps_ctl *ppsc,
 			     int type)
@@ -1579,7 +1567,6 @@ end:
 	rtlpriv->ra.is_special_data = false;
 	return false;
 }
-EXPORT_SYMBOL_GPL(rtl_is_special_data);
 
 void rtl_tx_ackqueue(struct ieee80211_hw *hw, struct sk_buff *skb)
 {
@@ -1588,7 +1575,6 @@ void rtl_tx_ackqueue(struct ieee80211_hw *hw, struct sk_buff *skb)
 
 	__skb_queue_tail(&tx_report->queue, skb);
 }
-EXPORT_SYMBOL_GPL(rtl_tx_ackqueue);
 
 static void rtl_tx_status(struct ieee80211_hw *hw, struct sk_buff *skb,
 			  bool ack)
@@ -1658,7 +1644,6 @@ void rtl_set_tx_report(struct rtl_tcb_desc *ptcb_desc, u8 *pdesc,
 		SET_TX_DESC_SW_DEFINE(pdesc, sn);
 	}
 }
-EXPORT_SYMBOL_GPL(rtl_set_tx_report);
 
 void rtl_tx_report_handler(struct ieee80211_hw *hw, u8 *tmp_buf, u8 c2h_cmd_len)
 {
@@ -1694,7 +1679,6 @@ void rtl_tx_report_handler(struct ieee80211_hw *hw, u8 *tmp_buf, u8 c2h_cmd_len)
 		 "Recv TX-Report st=0x%02X sn=0x%X retry=0x%X\n",
 		 st, sn, retry);
 }
-EXPORT_SYMBOL_GPL(rtl_tx_report_handler);
 
 bool rtl_check_tx_report_acked(struct ieee80211_hw *hw)
 {
@@ -1761,7 +1745,6 @@ u32 rtl_get_hal_edca_param(struct ieee80211_hw *hw,
 
 	return reg;
 }
-EXPORT_SYMBOL_GPL(rtl_get_hal_edca_param);
 
 /*********************************************************
  *
@@ -1909,7 +1892,6 @@ void rtl_rx_ampdu_apply(struct rtl_priv *rtlpriv)
 	rtlpriv->hw->max_rx_aggregation_subframes =
 		(ctrl_agg_size ? agg_size : IEEE80211_MAX_AMPDU_BUF_HT);
 }
-EXPORT_SYMBOL(rtl_rx_ampdu_apply);
 
 /*********************************************************
  *
@@ -1943,7 +1925,6 @@ void rtl_beacon_statistic(struct ieee80211_hw *hw, struct sk_buff *skb)
 
 	rtlpriv->link_info.bcn_rx_inperiod++;
 }
-EXPORT_SYMBOL_GPL(rtl_beacon_statistic);
 
 static void rtl_free_entries_from_scan_list(struct ieee80211_hw *hw)
 {
@@ -2056,7 +2037,6 @@ void rtl_collect_scan_list(struct ieee80211_hw *hw, struct sk_buff *skb)
 label_err:
 	spin_unlock_irqrestore(&rtlpriv->locks.scan_list_lock, flags);
 }
-EXPORT_SYMBOL(rtl_collect_scan_list);
 
 void rtl_watchdog_wq_callback(void *data)
 {
@@ -2303,7 +2283,6 @@ void rtl_c2hcmd_enqueue(struct ieee80211_hw *hw, struct sk_buff *skb)
 	/* wake up wq */
 	queue_delayed_work(rtlpriv->works.rtl_wq, &rtlpriv->works.c2hcmd_wq, 0);
 }
-EXPORT_SYMBOL(rtl_c2hcmd_enqueue);
 
 static void rtl_c2h_content_parsing(struct ieee80211_hw *hw,
 				    struct sk_buff *skb)
@@ -2525,7 +2504,6 @@ int rtl_send_smps_action(struct ieee80211_hw *hw,
 err_free:
 	return 0;
 }
-EXPORT_SYMBOL(rtl_send_smps_action);
 
 void rtl_phy_scan_operation_backup(struct ieee80211_hw *hw, u8 operation)
 {
@@ -2553,7 +2531,6 @@ void rtl_phy_scan_operation_backup(struct ieee80211_hw *hw, u8 operation)
 		}
 	}
 }
-EXPORT_SYMBOL(rtl_phy_scan_operation_backup);
 
 /* because mac80211 have issues when can receive del ba
  * so here we just make a fake del_ba if we receive a ba_req
@@ -2744,7 +2721,6 @@ void rtl_recognize_peer(struct ieee80211_hw *hw, u8 *data, unsigned int len)
 
 	mac->vendor = vendor;
 }
-EXPORT_SYMBOL_GPL(rtl_recognize_peer);
 
 MODULE_AUTHOR("lizhaoming	<chaoming_li@realsil.com.cn>");
 MODULE_AUTHOR("Realtek WlanFAE	<wlanfae@realtek.com>");
@@ -2753,7 +2729,6 @@ MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Realtek 802.11n PCI wireless core");
 
 struct rtl_global_var rtl_global_var = {};
-EXPORT_SYMBOL_GPL(rtl_global_var);
 
 static int __init rtl_core_module_init(void)
 {

@@ -1113,7 +1113,6 @@ error_out:
 	complete(&rtlpriv->firmware_loading_complete);
 	return -ENODEV;
 }
-EXPORT_SYMBOL(rtl_usb_probe);
 
 void rtl_usb_disconnect(struct usb_interface *intf)
 {
@@ -1147,16 +1146,13 @@ void rtl_usb_disconnect(struct usb_interface *intf)
 	usb_set_intfdata(intf, NULL);
 	ieee80211_free_hw(hw);
 }
-EXPORT_SYMBOL(rtl_usb_disconnect);
 
 int rtl_usb_suspend(struct usb_interface *pusb_intf, pm_message_t message)
 {
 	return 0;
 }
-EXPORT_SYMBOL(rtl_usb_suspend);
 
 int rtl_usb_resume(struct usb_interface *pusb_intf)
 {
 	return 0;
 }
-EXPORT_SYMBOL(rtl_usb_resume);

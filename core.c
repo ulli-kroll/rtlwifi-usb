@@ -44,12 +44,10 @@ u8 channel5g[CHANNEL_MAX_NUMBER_5G] = {
 	149, 151, 153, 155, 157, 159, 161,	/* Band 4 */
 	165, 167, 169, 171, 173, 175, 177	/* Band 4 */
 };
-EXPORT_SYMBOL(channel5g);
 
 u8 channel5g_80m[CHANNEL_MAX_NUMBER_5G_80M] = {
 	42, 58, 106, 122, 138, 155, 171
 };
-EXPORT_SYMBOL(channel5g_80m);
 
 void rtl_addr_delay(u32 addr)
 {
@@ -66,7 +64,6 @@ void rtl_addr_delay(u32 addr)
 	else if (addr == 0xf9)
 		usleep_range(1, 2);
 }
-EXPORT_SYMBOL(rtl_addr_delay);
 
 void rtl_rfreg_delay(struct ieee80211_hw *hw, enum radio_path rfpath, u32 addr,
 		     u32 mask, u32 data)
@@ -78,7 +75,6 @@ void rtl_rfreg_delay(struct ieee80211_hw *hw, enum radio_path rfpath, u32 addr,
 		udelay(1);
 	}
 }
-EXPORT_SYMBOL(rtl_rfreg_delay);
 
 void rtl_bb_delay(struct ieee80211_hw *hw, u32 addr, u32 data)
 {
@@ -89,7 +85,6 @@ void rtl_bb_delay(struct ieee80211_hw *hw, u32 addr, u32 data)
 		udelay(1);
 	}
 }
-EXPORT_SYMBOL(rtl_bb_delay);
 
 static void rtl_fw_do_work(const struct firmware *firmware, void *context,
 			   bool is_wow)
@@ -137,13 +132,11 @@ void rtl_fw_cb(const struct firmware *firmware, void *context)
 {
 	rtl_fw_do_work(firmware, context, false);
 }
-EXPORT_SYMBOL(rtl_fw_cb);
 
 void rtl_wowlan_fw_cb(const struct firmware *firmware, void *context)
 {
 	rtl_fw_do_work(firmware, context, true);
 }
-EXPORT_SYMBOL(rtl_wowlan_fw_cb);
 
 /*mutex for start & stop is must here. */
 static int rtl_op_start(struct ieee80211_hw *hw)
@@ -1855,7 +1848,6 @@ bool rtl_hal_pwrseqcmdparsing(struct rtl_priv *rtlpriv, u8 cut_version,
 
 	return true;
 }
-EXPORT_SYMBOL(rtl_hal_pwrseqcmdparsing);
 
 bool rtl_cmd_send_packet(struct ieee80211_hw *hw, struct sk_buff *skb)
 {
@@ -1886,7 +1878,6 @@ bool rtl_cmd_send_packet(struct ieee80211_hw *hw, struct sk_buff *skb)
 
 	return true;
 }
-EXPORT_SYMBOL(rtl_cmd_send_packet);
 const struct ieee80211_ops rtl_ops = {
 	.start = rtl_op_start,
 	.stop = rtl_op_stop,
@@ -1915,13 +1906,11 @@ const struct ieee80211_ops rtl_ops = {
 	.sta_remove = rtl_op_sta_remove,
 	.flush = rtl_op_flush,
 };
-EXPORT_SYMBOL_GPL(rtl_ops);
 
 bool rtl_btc_status_false(void)
 {
 	return false;
 }
-EXPORT_SYMBOL_GPL(rtl_btc_status_false);
 
 void rtl_dm_diginit(struct ieee80211_hw *hw, u32 cur_igvalue)
 {
@@ -1958,4 +1947,3 @@ void rtl_dm_diginit(struct ieee80211_hw *hw, u32 cur_igvalue)
 	dm_digtable->pre_cck_pd_state = CCK_PD_STAGE_MAX;
 	dm_digtable->cur_cck_pd_state = CCK_PD_STAGE_LOWRSSI;
 }
-EXPORT_SYMBOL(rtl_dm_diginit);

@@ -39,7 +39,6 @@ void rtl8723_dm_init_dynamic_txpower(struct ieee80211_hw *hw)
 	rtlpriv->dm.last_dtp_lvl = TXHIGHPWRLEVEL_NORMAL;
 	rtlpriv->dm.dynamic_txhighpower_lvl = TXHIGHPWRLEVEL_NORMAL;
 }
-EXPORT_SYMBOL_GPL(rtl8723_dm_init_dynamic_txpower);
 
 void rtl8723_dm_init_edca_turbo(struct ieee80211_hw *hw)
 {
@@ -48,7 +47,6 @@ void rtl8723_dm_init_edca_turbo(struct ieee80211_hw *hw)
 	rtlpriv->dm.is_any_nonbepkts = false;
 	rtlpriv->dm.is_cur_rdlstate = false;
 }
-EXPORT_SYMBOL_GPL(rtl8723_dm_init_edca_turbo);
 
 void rtl8723_dm_init_dynamic_bb_powersaving(struct ieee80211_hw *hw)
 {
@@ -62,4 +60,3 @@ void rtl8723_dm_init_dynamic_bb_powersaving(struct ieee80211_hw *hw)
 	dm_pstable->rssi_val_min = 0;
 	dm_pstable->initialize = 0;
 }
-EXPORT_SYMBOL_GPL(rtl8723_dm_init_dynamic_bb_powersaving);

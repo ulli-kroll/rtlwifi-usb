@@ -52,7 +52,6 @@ void rtl8723_enable_fw_download(struct ieee80211_hw *hw, bool enable)
 		rtl_write_byte(rtlpriv, REG_MCUFWDL + 1, 0x00);
 	}
 }
-EXPORT_SYMBOL_GPL(rtl8723_enable_fw_download);
 
 void rtl8723_write_fw(struct ieee80211_hw *hw,
 		      enum version_8723e version,
@@ -87,7 +86,6 @@ void rtl8723_write_fw(struct ieee80211_hw *hw,
 	}
 	RT_TRACE(rtlpriv, COMP_FW, DBG_TRACE, "FW write done.\n");
 }
-EXPORT_SYMBOL_GPL(rtl8723_write_fw);
 
 void rtl8723ae_firmware_selfreset(struct ieee80211_hw *hw)
 {
@@ -111,7 +109,6 @@ void rtl8723ae_firmware_selfreset(struct ieee80211_hw *hw)
 			       u1b_tmp&(~BIT(2)));
 	}
 }
-EXPORT_SYMBOL_GPL(rtl8723ae_firmware_selfreset);
 
 void rtl8723be_firmware_selfreset(struct ieee80211_hw *hw)
 {
@@ -134,7 +131,6 @@ void rtl8723be_firmware_selfreset(struct ieee80211_hw *hw)
 	RT_TRACE(rtlpriv, COMP_INIT, DBG_LOUD,
 		 "  _8051Reset8723be(): 8051 reset success .\n");
 }
-EXPORT_SYMBOL_GPL(rtl8723be_firmware_selfreset);
 
 int rtl8723_fw_free_to_go(struct ieee80211_hw *hw, bool is_8723be,
 			  int max_count)
@@ -182,7 +178,6 @@ int rtl8723_fw_free_to_go(struct ieee80211_hw *hw, bool is_8723be,
 exit:
 	return err;
 }
-EXPORT_SYMBOL_GPL(rtl8723_fw_free_to_go);
 
 int rtl8723_download_fw(struct ieee80211_hw *hw,
 			bool is_8723be, int max_count)
@@ -235,7 +230,6 @@ int rtl8723_download_fw(struct ieee80211_hw *hw,
 		pr_err("Firmware is not ready to run!\n");
 	return 0;
 }
-EXPORT_SYMBOL_GPL(rtl8723_download_fw);
 
 bool rtl8723_cmd_send_packet(struct ieee80211_hw *hw,
 			     struct sk_buff *skb)
@@ -268,4 +262,3 @@ bool rtl8723_cmd_send_packet(struct ieee80211_hw *hw,
 
 	return true;
 }
-EXPORT_SYMBOL_GPL(rtl8723_cmd_send_packet);

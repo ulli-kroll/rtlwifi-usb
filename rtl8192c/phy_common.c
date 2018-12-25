@@ -48,7 +48,6 @@ u32 rtl92c_phy_query_bb_reg(struct ieee80211_hw *hw, u32 regaddr, u32 bitmask)
 
 	return returnvalue;
 }
-EXPORT_SYMBOL(rtl92c_phy_query_bb_reg);
 
 void rtl92c_phy_set_bb_reg(struct ieee80211_hw *hw,
 			   u32 regaddr, u32 bitmask, u32 data)
@@ -72,7 +71,6 @@ void rtl92c_phy_set_bb_reg(struct ieee80211_hw *hw,
 		 "regaddr(%#x), bitmask(%#x), data(%#x)\n",
 		 regaddr, bitmask, data);
 }
-EXPORT_SYMBOL(rtl92c_phy_set_bb_reg);
 
 u32 _rtl92c_phy_fw_rf_serial_read(struct ieee80211_hw *hw,
 				  enum radio_path rfpath, u32 offset)
@@ -80,7 +78,6 @@ u32 _rtl92c_phy_fw_rf_serial_read(struct ieee80211_hw *hw,
 	WARN_ONCE(true, "rtl8192c-common: _rtl92c_phy_fw_rf_serial_read deprecated!\n");
 	return 0;
 }
-EXPORT_SYMBOL(_rtl92c_phy_fw_rf_serial_read);
 
 void _rtl92c_phy_fw_rf_serial_write(struct ieee80211_hw *hw,
 				    enum radio_path rfpath, u32 offset,
@@ -88,7 +85,6 @@ void _rtl92c_phy_fw_rf_serial_write(struct ieee80211_hw *hw,
 {
 	WARN_ONCE(true, "rtl8192c-common: _rtl92c_phy_fw_rf_serial_write deprecated!\n");
 }
-EXPORT_SYMBOL(_rtl92c_phy_fw_rf_serial_write);
 
 u32 _rtl92c_phy_rf_serial_read(struct ieee80211_hw *hw,
 			       enum radio_path rfpath, u32 offset)
@@ -139,7 +135,6 @@ u32 _rtl92c_phy_rf_serial_read(struct ieee80211_hw *hw,
 					       retvalue);
 	return retvalue;
 }
-EXPORT_SYMBOL(_rtl92c_phy_rf_serial_read);
 
 void _rtl92c_phy_rf_serial_write(struct ieee80211_hw *hw,
 				 enum radio_path rfpath, u32 offset,
@@ -163,7 +158,6 @@ void _rtl92c_phy_rf_serial_write(struct ieee80211_hw *hw,
 					       rfpath, pphyreg->rf3wire_offset,
 					       data_and_addr);
 }
-EXPORT_SYMBOL(_rtl92c_phy_rf_serial_write);
 
 u32 _rtl92c_phy_calculate_bit_shift(u32 bitmask)
 {
@@ -175,7 +169,6 @@ u32 _rtl92c_phy_calculate_bit_shift(u32 bitmask)
 	}
 	return i;
 }
-EXPORT_SYMBOL(_rtl92c_phy_calculate_bit_shift);
 
 static void _rtl92c_phy_bb_config_1t(struct ieee80211_hw *hw)
 {
@@ -197,7 +190,6 @@ bool rtl92c_phy_rf_config(struct ieee80211_hw *hw)
 
 	return rtlpriv->cfg->ops->phy_rf6052_config(hw);
 }
-EXPORT_SYMBOL(rtl92c_phy_rf_config);
 
 bool _rtl92c_phy_bb8192c_config_parafile(struct ieee80211_hw *hw)
 {
@@ -237,7 +229,6 @@ bool _rtl92c_phy_bb8192c_config_parafile(struct ieee80211_hw *hw)
 	return true;
 }
 
-EXPORT_SYMBOL(_rtl92c_phy_bb8192c_config_parafile);
 
 void _rtl92c_store_pwrIndex_diffrate_offset(struct ieee80211_hw *hw,
 					    u32 regaddr, u32 bitmask,
@@ -393,7 +384,6 @@ void _rtl92c_store_pwrIndex_diffrate_offset(struct ieee80211_hw *hw,
 		rtlphy->pwrgroup_cnt++;
 	}
 }
-EXPORT_SYMBOL(_rtl92c_store_pwrIndex_diffrate_offset);
 
 void rtl92c_phy_get_hw_reg_originalvalue(struct ieee80211_hw *hw)
 {
@@ -512,7 +502,6 @@ void _rtl92c_phy_init_bb_rf_register_definition(struct ieee80211_hw *hw)
 	rtlphy->phyreg_def[RF90_PATH_B].rf_rbpi = TRANSCEIVEB_HSPI_READBACK;
 
 }
-EXPORT_SYMBOL(_rtl92c_phy_init_bb_rf_register_definition);
 
 void rtl92c_phy_get_txpower_level(struct ieee80211_hw *hw, long *powerlevel)
 {
@@ -593,7 +582,6 @@ void rtl92c_phy_set_txpower_level(struct ieee80211_hw *hw, u8 channel)
 	rtlpriv->cfg->ops->phy_rf6052_set_ofdm_txpower(hw, &ofdmpowerlevel[0],
 						       channel);
 }
-EXPORT_SYMBOL(rtl92c_phy_set_txpower_level);
 
 bool rtl92c_phy_update_txpower_dbm(struct ieee80211_hw *hw, long power_indbm)
 {
@@ -625,7 +613,6 @@ bool rtl92c_phy_update_txpower_dbm(struct ieee80211_hw *hw, long power_indbm)
 	rtl92c_phy_set_txpower_level(hw, rtlphy->current_channel);
 	return true;
 }
-EXPORT_SYMBOL(rtl92c_phy_update_txpower_dbm);
 
 u8 _rtl92c_phy_dbm_to_txpwr_idx(struct ieee80211_hw *hw,
 				enum wireless_mode wirelessmode,
@@ -657,7 +644,6 @@ u8 _rtl92c_phy_dbm_to_txpwr_idx(struct ieee80211_hw *hw,
 
 	return txpwridx;
 }
-EXPORT_SYMBOL(_rtl92c_phy_dbm_to_txpwr_idx);
 
 long _rtl92c_phy_txpwr_idx_to_dbm(struct ieee80211_hw *hw,
 				  enum wireless_mode wirelessmode,
@@ -681,7 +667,6 @@ long _rtl92c_phy_txpwr_idx_to_dbm(struct ieee80211_hw *hw,
 	pwrout_dbm = txpwridx / 2 + offset;
 	return pwrout_dbm;
 }
-EXPORT_SYMBOL(_rtl92c_phy_txpwr_idx_to_dbm);
 
 void rtl92c_phy_set_bw_mode(struct ieee80211_hw *hw,
 			    enum nl80211_channel_type ch_type)
@@ -703,7 +688,6 @@ void rtl92c_phy_set_bw_mode(struct ieee80211_hw *hw,
 		rtlphy->current_chan_bw = tmp_bw;
 	}
 }
-EXPORT_SYMBOL(rtl92c_phy_set_bw_mode);
 
 void rtl92c_phy_sw_chnl_callback(struct ieee80211_hw *hw)
 {
@@ -733,7 +717,6 @@ void rtl92c_phy_sw_chnl_callback(struct ieee80211_hw *hw)
 	} while (true);
 	RT_TRACE(rtlpriv, COMP_SCAN, DBG_TRACE, "\n");
 }
-EXPORT_SYMBOL(rtl92c_phy_sw_chnl_callback);
 
 u8 rtl92c_phy_sw_chnl(struct ieee80211_hw *hw)
 {
@@ -762,7 +745,6 @@ u8 rtl92c_phy_sw_chnl(struct ieee80211_hw *hw)
 	}
 	return 1;
 }
-EXPORT_SYMBOL(rtl92c_phy_sw_chnl);
 
 static void _rtl92c_phy_sw_rf_seting(struct ieee80211_hw *hw, u8 channel)
 {
@@ -923,7 +905,6 @@ bool rtl8192_phy_check_is_legal_rfpath(struct ieee80211_hw *hw, u32 rfpath)
 {
 	return true;
 }
-EXPORT_SYMBOL(rtl8192_phy_check_is_legal_rfpath);
 
 static u8 _rtl92c_phy_path_a_iqk(struct ieee80211_hw *hw, bool config_pathb)
 {
@@ -1501,7 +1482,6 @@ void rtl92c_phy_iq_calibrate(struct ieee80211_hw *hw, bool b_recovery)
 	_rtl92c_phy_save_adda_registers(hw, iqk_bb_reg,
 					rtlphy->iqk_bb_backup, 10);
 }
-EXPORT_SYMBOL(rtl92c_phy_iq_calibrate);
 
 void rtl92c_phy_lc_calibrate(struct ieee80211_hw *hw)
 {
@@ -1513,7 +1493,6 @@ void rtl92c_phy_lc_calibrate(struct ieee80211_hw *hw)
 	else
 		rtlpriv->cfg->ops->phy_lc_calibrate(hw, false);
 }
-EXPORT_SYMBOL(rtl92c_phy_lc_calibrate);
 
 void rtl92c_phy_ap_calibrate(struct ieee80211_hw *hw, s8 delta)
 {
@@ -1528,7 +1507,6 @@ void rtl92c_phy_ap_calibrate(struct ieee80211_hw *hw, s8 delta)
 	else
 		_rtl92c_phy_ap_calibrate(hw, delta, false);
 }
-EXPORT_SYMBOL(rtl92c_phy_ap_calibrate);
 
 void rtl92c_phy_set_rfpath_switch(struct ieee80211_hw *hw, bool bmain)
 {
@@ -1539,7 +1517,6 @@ void rtl92c_phy_set_rfpath_switch(struct ieee80211_hw *hw, bool bmain)
 	else
 		_rtl92c_phy_set_rfpath_switch(hw, bmain, false);
 }
-EXPORT_SYMBOL(rtl92c_phy_set_rfpath_switch);
 
 bool rtl92c_phy_set_io_cmd(struct ieee80211_hw *hw, enum io_type iotype)
 {
@@ -1578,7 +1555,6 @@ bool rtl92c_phy_set_io_cmd(struct ieee80211_hw *hw, enum io_type iotype)
 	RT_TRACE(rtlpriv, COMP_CMD, DBG_TRACE, "IO Type(%#x)\n", iotype);
 	return true;
 }
-EXPORT_SYMBOL(rtl92c_phy_set_io_cmd);
 
 void rtl92c_phy_set_io(struct ieee80211_hw *hw)
 {
@@ -1610,7 +1586,6 @@ void rtl92c_phy_set_io(struct ieee80211_hw *hw)
 	RT_TRACE(rtlpriv, COMP_CMD, DBG_TRACE,
 		 "(%#x)\n", rtlphy->current_io_type);
 }
-EXPORT_SYMBOL(rtl92c_phy_set_io);
 
 void rtl92ce_phy_set_rf_on(struct ieee80211_hw *hw)
 {
@@ -1623,7 +1598,6 @@ void rtl92ce_phy_set_rf_on(struct ieee80211_hw *hw)
 	rtl_write_byte(rtlpriv, REG_SYS_FUNC_EN, 0xE3);
 	rtl_write_byte(rtlpriv, REG_TXPAUSE, 0x00);
 }
-EXPORT_SYMBOL(rtl92ce_phy_set_rf_on);
 
 void _rtl92c_phy_set_rf_sleep(struct ieee80211_hw *hw)
 {
@@ -1654,4 +1628,3 @@ void _rtl92c_phy_set_rf_sleep(struct ieee80211_hw *hw)
 	rtl_write_byte(rtlpriv, REG_SYS_FUNC_EN, 0xE2);
 	rtl_write_byte(rtlpriv, REG_SPS0_CTRL, 0x22);
 }
-EXPORT_SYMBOL(_rtl92c_phy_set_rf_sleep);
