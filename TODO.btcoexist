@@ -1,0 +1,25 @@
+btcoexist matrix
+
+currently btcoexist is disabled by default,
+to remove complexity
+
+gn devices, only USB2
+
+|  driver   | btcoexist |  status  |  source              |
+|-----------|-----------|----------|----------------------|
+| rtl8723bu | possible  | disabled | upstream / rtl8723be |
+| rtl8188eu | none      |          |                      |
+| rtl8188fu | none      |          |                      |
+|           |           |          |                      |
+
+abgn/ac devices, may have USB3 support
+
+|  driver   | btcoexist |  status  |  source              |
+|-----------|-----------|----------|----------------------|
+| rtl8821au | none      |          |                      |
+| rtl8814au | none      |          |                      |
+| rtl8822bu | possible  | disabled |                      |
+| rtl8821cu | possible  | disabled |                      |
+|           |           |          |                      |
+
+
