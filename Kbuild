@@ -20,3 +20,16 @@ btcoexist-objs :=	btcoexist/halbtc8192e2ant.o	\
 			btcoexist/halbtc8821a2ant.o	\
 			btcoexist/halbtcoutsrc.o	\
 			btcoexist/rtl_btc.o
+
+obj-$(CONFIG_RTL8723BU)        += rtl8723bu.o
+rtl8723bu-objs	:= rtl8723bu/dm.o \
+		   rtl8723bu/fw.o  \
+		   rtl8723bu/hw.o  \
+		   rtl8723bu/led.o  \
+		   rtl8723bu/phy.o  \
+		   rtl8723bu/pwrseq.o  \
+		   rtl8723bu/rf.o  \
+		   rtl8723bu/sw.o  \
+		   rtl8723bu/table.o  \
+		   rtl8723bu/trx.o \
+		   rtlwifi-usb.o
