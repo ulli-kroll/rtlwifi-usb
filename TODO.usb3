@@ -1,0 +1,29 @@
+
+USB3 issue on Jaguar1 and Jaguar2 devices
+
+device matrix for USB3 switch
+USB3 device matrix for abgn/ac hardware
+
+| hardware  | hw type  | usb mode  |
+|-----------|----------|-----------|
+| rtl8821au | Jaguar 1 | USB2 only |
+| rtl8812au | Jaguar 1 | USB2/USB3 |
+| rtl8814au | Jaguar 1 | USB2/USB3 |
+| rtl8822bu | Jaguar 2 | USB2/USB3 |
+| rtl8821cu | Jaguar 2 | USB2 only |
+
+Jaguar1 and Jaguar2 are different subdevices
+of JAGUAR. They use different switch 
+methods/detection
+
+- figure out how USB3/USB2 switch is working.
+  At what point can we switch to USB3
+
+- check if this is possible to rewite parts of
+  RTLWIFI-LIB to use this switch before we init
+  802.11 phy/interfaces and annouce via kernel 
+  API.
+  We don't want do annouce a phy/wifi device
+  with a small glitch.
+  Original vendor driver does this and may
+  distribute kernel and userspace.

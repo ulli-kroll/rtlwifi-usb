@@ -1,0 +1,25 @@
+firmware version matrix
+Should be updated with each vendor driver release
+
+gn devices, only USB2
+
+|  driver   | hardware  |  source   |  version   |
+|-----------|-----------|-----------|------------|
+| rtl8723bu | rtl8723bu |           |            |
+| rtl8188eu | rtl8188eu |           |            |
+| rtl8188fu | rtl8188fu |           |            |
+|           |           |           |            |
+
+abgn/ac devices, may have USB3 support
+rtl8812au/rtl8821au are special, they use the same driver
+
+|  driver   | hardware  |  source   |  version   |
+|-----------|---------- |-----------|------------|
+| rtl8821au | rtl8821au |           |            |
+| rtl8821au | rtl8812au |           |            |
+| rtl8814au | rtl8814au |           |            |
+| rtl8822bu | rtl8822bu |           |            |
+| rtl8821cu | rtl8821cu |           |            |
+|           |           |           |            |
+
+
