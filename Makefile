@@ -28,7 +28,7 @@ installfw:
 .PHONY: modules clean
 
 clean:
-	rm -fr */*.mod.c */*.mod */*.o */.*.cmd */*/.*.cmd */*/*/.*cmd
+	rm -fr */*.mod.c */*.mod */*.o */.*.cmd
 	rm -f *.mod.c *.o .*.cmd *.ko
 	rm -f Module.symvers Module.markers modules.order
 	rm -fr .tmp_versions
