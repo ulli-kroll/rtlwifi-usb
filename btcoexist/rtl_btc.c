@@ -492,7 +492,6 @@ struct rtl_btc_ops *rtl_btc_get_ops_pointer(void)
 {
 	return &rtl_btc_operation;
 }
-EXPORT_SYMBOL(rtl_btc_get_ops_pointer);
 
 
 enum rt_media_status mgnt_link_status_query(struct ieee80211_hw *hw)

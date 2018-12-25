@@ -164,7 +164,6 @@ int rtl92c_download_fw(struct ieee80211_hw *hw)
 
 	return 0;
 }
-EXPORT_SYMBOL(rtl92c_download_fw);
 
 static bool _rtl92c_check_fw_read_last_h2c(struct ieee80211_hw *hw, u8 boxnum)
 {
@@ -399,7 +398,6 @@ void rtl92c_fill_h2c_cmd(struct ieee80211_hw *hw,
 
 	return;
 }
-EXPORT_SYMBOL(rtl92c_fill_h2c_cmd);
 
 void rtl92c_firmware_selfreset(struct ieee80211_hw *hw)
 {
@@ -420,7 +418,6 @@ void rtl92c_firmware_selfreset(struct ieee80211_hw *hw)
 		u1b_tmp = rtl_read_byte(rtlpriv, REG_SYS_FUNC_EN + 1);
 	}
 }
-EXPORT_SYMBOL(rtl92c_firmware_selfreset);
 
 void rtl92c_set_fw_pwrmode_cmd(struct ieee80211_hw *hw, u8 mode)
 {
@@ -441,7 +438,6 @@ void rtl92c_set_fw_pwrmode_cmd(struct ieee80211_hw *hw, u8 mode)
 		      u1_h2c_set_pwrmode, 3);
 	rtl92c_fill_h2c_cmd(hw, H2C_SETPWRMODE, 3, u1_h2c_set_pwrmode);
 }
-EXPORT_SYMBOL(rtl92c_set_fw_pwrmode_cmd);
 
 #define BEACON_PG		0 /*->1*/
 #define PSPOLL_PG		2
@@ -647,7 +643,6 @@ void rtl92c_set_fw_rsvdpagepkt(struct ieee80211_hw *hw,
 		rtl_dbg(rtlpriv, COMP_ERR, DBG_WARNING,
 			"Set RSVD page location to Fw FAIL!!!!!!.\n");
 }
-EXPORT_SYMBOL(rtl92c_set_fw_rsvdpagepkt);
 
 void rtl92c_set_fw_joinbss_report_cmd(struct ieee80211_hw *hw, u8 mstatus)
 {
@@ -657,7 +652,6 @@ void rtl92c_set_fw_joinbss_report_cmd(struct ieee80211_hw *hw, u8 mstatus)
 
 	rtl92c_fill_h2c_cmd(hw, H2C_JOINBSSRPT, 1, u1_joinbssrpt_parm);
 }
-EXPORT_SYMBOL(rtl92c_set_fw_joinbss_report_cmd);
 
 static void rtl92c_set_p2p_ctw_period_cmd(struct ieee80211_hw *hw, u8 ctwindow)
 {
@@ -767,4 +761,3 @@ void rtl92c_set_p2p_ps_offload_cmd(struct ieee80211_hw *hw, u8 p2p_ps_state)
 	rtl92c_fill_h2c_cmd(hw, H2C_P2P_PS_OFFLOAD, 1, (u8 *)p2p_ps_offload);
 
 }
-EXPORT_SYMBOL_GPL(rtl92c_set_p2p_ps_offload_cmd);

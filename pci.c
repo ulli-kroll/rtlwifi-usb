@@ -2330,7 +2330,6 @@ fail1:
 
 	return err;
 }
-EXPORT_SYMBOL(rtl_pci_probe);
 
 void rtl_pci_disconnect(struct pci_dev *pdev)
 {
@@ -2386,7 +2385,6 @@ void rtl_pci_disconnect(struct pci_dev *pdev)
 
 	ieee80211_free_hw(hw);
 }
-EXPORT_SYMBOL(rtl_pci_disconnect);
 
 #ifdef CONFIG_PM_SLEEP
 /***************************************
@@ -2414,7 +2412,6 @@ int rtl_pci_suspend(struct device *dev)
 
 	return 0;
 }
-EXPORT_SYMBOL(rtl_pci_suspend);
 
 int rtl_pci_resume(struct device *dev)
 {
@@ -2425,7 +2422,6 @@ int rtl_pci_resume(struct device *dev)
 	rtl_init_rfkill(hw);
 	return 0;
 }
-EXPORT_SYMBOL(rtl_pci_resume);
 #endif /* CONFIG_PM_SLEEP */
 
 const struct rtl_intf_ops rtl_pci_ops = {

@@ -42,7 +42,6 @@ bool rtl_ps_enable_nic(struct ieee80211_hw *hw)
 
 	return true;
 }
-EXPORT_SYMBOL(rtl_ps_enable_nic);
 
 bool rtl_ps_disable_nic(struct ieee80211_hw *hw)
 {
@@ -60,7 +59,6 @@ bool rtl_ps_disable_nic(struct ieee80211_hw *hw)
 
 	return true;
 }
-EXPORT_SYMBOL(rtl_ps_disable_nic);
 
 static bool rtl_ps_set_rf_state(struct ieee80211_hw *hw,
 				enum rf_pwrstate state_toset,
@@ -287,7 +285,6 @@ void rtl_ips_nic_on(struct ieee80211_hw *hw)
 	}
 	mutex_unlock(&rtlpriv->locks.ips_mutex);
 }
-EXPORT_SYMBOL_GPL(rtl_ips_nic_on);
 
 /*for FW LPS*/
 
@@ -538,7 +535,6 @@ void rtl_swlps_beacon(struct ieee80211_hw *hw, void *data, unsigned int len)
 			"u_bufferd: %x, m_buffered: %x\n", u_buffed, m_buffed);
 	}
 }
-EXPORT_SYMBOL_GPL(rtl_swlps_beacon);
 
 void rtl_swlps_rf_awake(struct ieee80211_hw *hw)
 {
@@ -651,7 +647,6 @@ void rtl_lps_change_work_callback(struct work_struct *work)
 	else
 		rtl_lps_leave_core(hw);
 }
-EXPORT_SYMBOL_GPL(rtl_lps_change_work_callback);
 
 void rtl_lps_enter(struct ieee80211_hw *hw, bool may_block)
 {
@@ -662,7 +657,6 @@ void rtl_lps_enter(struct ieee80211_hw *hw, bool may_block)
 	rtlpriv->enter_ps = true;
 	schedule_work(&rtlpriv->works.lps_change_work);
 }
-EXPORT_SYMBOL_GPL(rtl_lps_enter);
 
 void rtl_lps_leave(struct ieee80211_hw *hw, bool may_block)
 {
@@ -673,7 +667,6 @@ void rtl_lps_leave(struct ieee80211_hw *hw, bool may_block)
 	rtlpriv->enter_ps = false;
 	schedule_work(&rtlpriv->works.lps_change_work);
 }
-EXPORT_SYMBOL_GPL(rtl_lps_leave);
 
 void rtl_swlps_wq_callback(struct work_struct *work)
 {
@@ -995,4 +988,3 @@ void rtl_p2p_info(struct ieee80211_hw *hw, void *data, unsigned int len)
 	else
 		rtl_p2p_noa_ie(hw , data , len - FCS_LEN);
 }
-EXPORT_SYMBOL_GPL(rtl_p2p_info);

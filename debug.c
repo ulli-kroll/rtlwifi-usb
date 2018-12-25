@@ -8,6 +8,25 @@
 #include <linux/vmalloc.h>
 
 #ifdef CONFIG_RTLWIFI_DEBUG
+void _rtl_dbg_trace(struct rtl_priv *rtlpriv, u64 comp, int level,
+		    const char *fmt, ...)
+{
+	if (unlikely((comp & rtlpriv->cfg->mod_params->debug_mask) &&
+		     level <= rtlpriv->cfg->mod_params->debug_level)) {
+		struct va_format vaf;
+		va_list args;
+
+		va_start(args, fmt);
+
+		vaf.fmt = fmt;
+		vaf.va = &args;
+
+		pr_info(":<%lx> %pV", in_interrupt(), &vaf);
+
+		va_end(args);
+	}
+}
+
 void _rtl_dbg_print(struct rtl_priv *rtlpriv, u64 comp, int level,
 		    const char *fmt, ...)
 {
@@ -26,7 +45,6 @@ void _rtl_dbg_print(struct rtl_priv *rtlpriv, u64 comp, int level,
 		va_end(args);
 	}
 }
-EXPORT_SYMBOL_GPL(_rtl_dbg_print);
 
 void _rtl_dbg_print_data(struct rtl_priv *rtlpriv, u64 comp, int level,
 			 const char *titlestring,
@@ -40,7 +58,6 @@ void _rtl_dbg_print_data(struct rtl_priv *rtlpriv, u64 comp, int level,
 				     hexdata, hexdatalen);
 	}
 }
-EXPORT_SYMBOL_GPL(_rtl_dbg_print_data);
 
 struct rtl_debugfs_priv {
 	struct rtl_priv *rtlpriv;
@@ -384,8 +401,8 @@ static ssize_t rtl_debugfs_set_write_rfreg(struct file *filp,
 		     &path, &addr, &bitmask, &data);
 
 	if (num != 4) {
-		rtl_dbg(rtlpriv, COMP_ERR, DBG_DMESG,
-			"Format is <path> <addr> <mask> <data>\n");
+		RT_TRACE(rtlpriv, COMP_ERR, DBG_DMESG,
+			 "Format is <path> <addr> <mask> <data>\n");
 		return count;
 	}
 
@@ -442,6 +459,11 @@ void rtl_debug_add_one(struct ieee80211_hw *hw)
 
 	rtlpriv->dbg.debugfs_dir =
 		debugfs_create_dir(rtlpriv->dbg.debugfs_name, debugfs_topdir);
+	if (!rtlpriv->dbg.debugfs_dir) {
+		pr_err("Unable to init debugfs:/%s/%s\n", rtlpriv->cfg->name,
+		       rtlpriv->dbg.debugfs_name);
+		return;
+	}
 
 	parent = rtlpriv->dbg.debugfs_dir;
 
@@ -490,7 +512,6 @@ void rtl_debug_add_one(struct ieee80211_hw *hw)
 	RTL_DEBUGFS_ADD_W(write_h2c);
 	RTL_DEBUGFS_ADD_W(write_rfreg);
 }
-EXPORT_SYMBOL_GPL(rtl_debug_add_one);
 
 void rtl_debug_remove_one(struct ieee80211_hw *hw)
 {
@@ -499,7 +520,6 @@ void rtl_debug_remove_one(struct ieee80211_hw *hw)
 	debugfs_remove_recursive(rtlpriv->dbg.debugfs_dir);
 	rtlpriv->dbg.debugfs_dir = NULL;
 }
-EXPORT_SYMBOL_GPL(rtl_debug_remove_one);
 
 void rtl_debugfs_add_topdir(void)
 {

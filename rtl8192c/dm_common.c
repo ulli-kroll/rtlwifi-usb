@@ -145,7 +145,6 @@ void dm_restorepowerindex(struct ieee80211_hw *hw)
 		rtl_write_byte(rtlpriv, power_index_reg[index],
 			       rtlpriv->dm.powerindex_backup[index]);
 }
-EXPORT_SYMBOL_GPL(dm_restorepowerindex);
 
 void dm_writepowerindex(struct ieee80211_hw *hw, u8 value)
 {
@@ -155,7 +154,6 @@ void dm_writepowerindex(struct ieee80211_hw *hw, u8 value)
 	for (index = 0; index < 6; index++)
 		rtl_write_byte(rtlpriv, power_index_reg[index], value);
 }
-EXPORT_SYMBOL_GPL(dm_writepowerindex);
 
 void dm_savepowerindex(struct ieee80211_hw *hw)
 {
@@ -168,7 +166,6 @@ void dm_savepowerindex(struct ieee80211_hw *hw)
 		rtlpriv->dm.powerindex_backup[index] = tmp;
 	}
 }
-EXPORT_SYMBOL_GPL(dm_savepowerindex);
 
 static u8 rtl92c_dm_initial_gain_min_pwdb(struct ieee80211_hw *hw)
 {
@@ -566,7 +563,6 @@ void rtl92c_dm_write_dig(struct ieee80211_hw *hw)
 		dm_digtable->rx_gain_max, dm_digtable->rx_gain_min,
 		dm_digtable->large_fa_hit, dm_digtable->forbidden_igi);
 }
-EXPORT_SYMBOL(rtl92c_dm_write_dig);
 
 static void rtl92c_dm_pwdb_monitor(struct ieee80211_hw *hw)
 {
@@ -610,7 +606,6 @@ void rtl92c_dm_init_edca_turbo(struct ieee80211_hw *hw)
 	rtlpriv->dm.is_any_nonbepkts = false;
 	rtlpriv->dm.is_cur_rdlstate = false;
 }
-EXPORT_SYMBOL(rtl92c_dm_init_edca_turbo);
 
 static void rtl92c_dm_check_edca_turbo(struct ieee80211_hw *hw)
 {
@@ -1165,7 +1160,6 @@ void rtl92c_dm_check_txpower_tracking(struct ieee80211_hw *hw)
 {
 	rtl92c_dm_check_txpower_tracking_thermal_meter(hw);
 }
-EXPORT_SYMBOL(rtl92c_dm_check_txpower_tracking);
 
 void rtl92c_dm_init_rate_adaptive_mask(struct ieee80211_hw *hw)
 {
@@ -1181,7 +1175,6 @@ void rtl92c_dm_init_rate_adaptive_mask(struct ieee80211_hw *hw)
 		rtlpriv->dm.useramask = false;
 
 }
-EXPORT_SYMBOL(rtl92c_dm_init_rate_adaptive_mask);
 
 static void rtl92c_dm_init_dynamic_bb_powersaving(struct ieee80211_hw *hw)
 {
@@ -1263,7 +1256,6 @@ void rtl92c_dm_rf_saving(struct ieee80211_hw *hw, u8 bforce_in_normal)
 		dm_pstable->pre_rfstate = dm_pstable->cur_rfstate;
 	}
 }
-EXPORT_SYMBOL(rtl92c_dm_rf_saving);
 
 static void rtl92c_dm_dynamic_bb_powersaving(struct ieee80211_hw *hw)
 {
@@ -1331,7 +1323,6 @@ void rtl92c_dm_init(struct ieee80211_hw *hw)
 	rtlpriv->dm.ofdm_pkt_cnt = 0;
 	rtlpriv->dm.dm_rssi_sel = RSSI_DEFAULT;
 }
-EXPORT_SYMBOL(rtl92c_dm_init);
 
 void rtl92c_dm_dynamic_txpower(struct ieee80211_hw *hw)
 {
@@ -1442,7 +1433,6 @@ void rtl92c_dm_watchdog(struct ieee80211_hw *hw)
 		rtl92c_dm_check_edca_turbo(hw);
 	}
 }
-EXPORT_SYMBOL(rtl92c_dm_watchdog);
 
 u8 rtl92c_bt_rssi_state_change(struct ieee80211_hw *hw)
 {
@@ -1492,7 +1482,6 @@ u8 rtl92c_bt_rssi_state_change(struct ieee80211_hw *hw)
 		return false;
 	}
 }
-EXPORT_SYMBOL(rtl92c_bt_rssi_state_change);
 
 static bool rtl92c_bt_state_change(struct ieee80211_hw *hw)
 {
@@ -1735,4 +1724,3 @@ void rtl92c_dm_bt_coexist(struct ieee80211_hw *hw)
 			rtl92c_check_bt_change(hw);
 	}
 }
-EXPORT_SYMBOL(rtl92c_dm_bt_coexist);
