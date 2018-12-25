@@ -357,6 +357,8 @@ enum hardware_type {
 	HARDWARE_TYPE_RTL8192EE,
 	HARDWARE_TYPE_RTL8821AE,
 	HARDWARE_TYPE_RTL8812AE,
+	HARDWARE_TYPE_RTL8812AU,
+	HARDWARE_TYPE_RTL8821AU,
 	HARDWARE_TYPE_RTL8822BE,
 
 	/* keep it last */
@@ -380,6 +382,10 @@ enum hardware_type {
 			(RTL_HW_TYPE(rtlpriv) == HARDWARE_TYPE_RTL8192EE)
 #define IS_HARDWARE_TYPE_8822B(rtlpriv)			\
 			(RTL_HW_TYPE(rtlpriv) == HARDWARE_TYPE_RTL8822BE)
+#define IS_HARDWARE_TYPE_8812AU(rtlpriv)			\
+			(RTL_HW_TYPE(rtlpriv) == HARDWARE_TYPE_RTL8812AU)
+#define IS_HARDWARE_TYPE_8821AU(rtlpriv)			\
+			(RTL_HW_TYPE(rtlpriv) == HARDWARE_TYPE_RTL8821AU)
 
 #define RX_HAL_IS_CCK_RATE(rxmcs)			\
 	((rxmcs) == DESC_RATE1M ||			\
