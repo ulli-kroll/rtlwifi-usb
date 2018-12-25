@@ -1,6 +1,7 @@
 PWD = $(shell pwd)
 
 export CONFIG_RTLWIFI_USB = m
+export CONFIG_RTL8822BU = m
 PLATFORM = PC
 
 MAKE = make
