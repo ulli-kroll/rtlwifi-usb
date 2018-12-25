@@ -2730,7 +2730,7 @@ MODULE_DESCRIPTION("Realtek 802.11n PCI wireless core");
 
 struct rtl_global_var rtl_global_var = {};
 
-static int __init rtl_core_module_init(void)
+int rtl_core_module_init(void)
 {
 	BUILD_BUG_ON(TX_PWR_BY_RATE_NUM_RATE < TX_PWR_BY_RATE_NUM_SECTION);
 	BUILD_BUG_ON(MAX_RATE_SECTION_NUM != MAX_RATE_SECTION);
@@ -2750,7 +2750,7 @@ static int __init rtl_core_module_init(void)
 	return 0;
 }
 
-static void __exit rtl_core_module_exit(void)
+void rtl_core_module_exit(void)
 {
 	/*RC*/
 	rtl_rate_control_unregister();
@@ -2758,6 +2758,3 @@ static void __exit rtl_core_module_exit(void)
 	/* remove debugfs */
 	rtl_debugfs_remove_topdir();
 }
-
-module_init(rtl_core_module_init);
-module_exit(rtl_core_module_exit);

@@ -1040,6 +1040,10 @@ int rtl_usb_probe(struct usb_interface *intf,
 	struct usb_device	*udev;
 	struct rtl_usb_priv *usb_priv;
 
+	err = rtl_core_module_init();
+	if (err)
+		return err;
+
 	hw = ieee80211_alloc_hw(sizeof(struct rtl_priv) +
 				sizeof(struct rtl_usb_priv), &rtl_ops);
 	if (!hw) {
@@ -1147,6 +1151,8 @@ void rtl_usb_disconnect(struct usb_interface *intf)
 	usb_put_dev(rtlusb->udev);
 	usb_set_intfdata(intf, NULL);
 	ieee80211_free_hw(hw);
+
+	rtl_core_module_exit();
 }
 
 int rtl_usb_suspend(struct usb_interface *pusb_intf, pm_message_t message)
