@@ -128,4 +128,6 @@ void rtl_easy_concurrent_retrytimer_callback(struct timer_list *t);
 extern struct rtl_global_var rtl_global_var;
 void rtl_phy_scan_operation_backup(struct ieee80211_hw *hw, u8 operation);
 
+int rtl_core_module_init(void);
+void rtl_core_module_exit(void);
 #endif
