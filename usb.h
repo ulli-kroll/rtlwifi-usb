@@ -28,11 +28,11 @@
 
 #define RTL_RX_DESC_SIZE		24
 
-#define RTL_USB_DEVICE(vend, prod, cfg) \
+#define RTL_USB_DEVICE(vend, prod, hw_type) \
 	.match_flags = USB_DEVICE_ID_MATCH_DEVICE, \
 	.idVendor = (vend), \
 	.idProduct = (prod), \
-	.driver_info = (kernel_ulong_t)&(cfg)
+	.driver_info = (kernel_ulong_t) (hw_type)
 
 #define USB_HIGH_SPEED_BULK_SIZE	512
 #define USB_FULL_SPEED_BULK_SIZE	64

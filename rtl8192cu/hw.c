@@ -970,7 +970,6 @@ int rtl92cu_hw_init(struct ieee80211_hw *hw)
 	local_irq_enable();
 
 	rtlhal->fw_ready = false;
-	rtlhal->hw_type = HARDWARE_TYPE_RTL8192CU;
 	err = _rtl92cu_init_mac(hw);
 	if (err) {
 		pr_err("init mac failed!\n");
