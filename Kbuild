@@ -20,3 +20,16 @@ btcoexist-objs :=	btcoexist/halbtc8192e2ant.o	\
 			btcoexist/halbtc8821a2ant.o	\
 			btcoexist/halbtcoutsrc.o	\
 			btcoexist/rtl_btc.o
+
+obj-$(CONFIG_RTL8188FU)       += rtl8188fu.o
+rtl8188fu-objs	:= rtl8188fu/dm.o \
+		   rtl8188fu/fw.o  \
+		   rtl8188fu/hw.o  \
+		   rtl8188fu/led.o  \
+		   rtl8188fu/phy.o  \
+		   rtl8188fu/pwrseq.o  \
+		   rtl8188fu/rf.o  \
+		   rtl8188fu/sw.o  \
+		   rtl8188fu/table.o  \
+		   rtl8188fu/trx.o \
+		   rtlwifi-usb.o
